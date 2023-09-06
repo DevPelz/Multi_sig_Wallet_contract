@@ -28,10 +28,6 @@ contract Multsig {
     error InvalidAdminNumber(uint number);
     error dulicate(address _addr);
 
-    fallback() external payable {}
-
-    receive() external payable {}
-
     modifier onlyAdmin() {
         require(isAdmin[msg.sender], "Nott a valid admin");
         _;
@@ -48,6 +44,8 @@ contract Multsig {
             if (isAdmin[_admins[i]]) {
                 revert dulicate(_admins[i]);
             }
+
+            isAdmin[_admins[i]] = true;
         }
 
         Admins = _admins;
@@ -88,4 +86,8 @@ contract Multsig {
         uint size = Admins.length;
         MinAdmin = (size * 70) / 100;
     }
+
+    receive() external payable {}
+
+    fallback() external payable {}
 }
