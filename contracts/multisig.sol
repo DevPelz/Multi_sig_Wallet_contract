@@ -8,7 +8,7 @@ pragma solidity ^0.8.19;
 // napping address to bool for valid Admins
 // mapping uinnt =? address => bool to track approval of each transaction
 // mappping uin => address = bool to tack approval of eachh Admin
-contract Multsig {
+contract Multisig {
     struct Transaction {
         address spender;
         uint amount;
@@ -29,7 +29,7 @@ contract Multsig {
     error dulicate(address _addr);
 
     modifier onlyAdmin() {
-        require(isAdmin[msg.sender], "Nott a valid admin");
+        require(isAdmin[msg.sender], "Not a valid admin");
         _;
     }
 
@@ -57,9 +57,10 @@ contract Multsig {
         _transaction.amount = amount;
         _transaction.spender = spender;
         _transaction.isActive = true;
+        ApproveTransaction(transactionId);
     }
 
-    function ApproveTransactiobn(uint _id) external {
+    function ApproveTransaction(uint _id) public onlyAdmin {
         require(!hasApproved[_id][msg.sender], "Already Approved");
         hasApproved[_id][msg.sender] = true;
 
@@ -85,6 +86,10 @@ contract Multsig {
     function calcMinAppoval() public view returns (uint MinAdmin) {
         uint size = Admins.length;
         MinAdmin = (size * 70) / 100;
+    }
+
+    function getTransaction(uint id) external returns (Transaction memory) {
+        return transaction[id];
     }
 
     receive() external payable {}

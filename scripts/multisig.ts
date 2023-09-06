@@ -8,6 +8,13 @@ async function main() {
     });
 
     await multisig.waitForDeployment();
+
+    const amount = ethers.formatEther('5');
+
+    multisig.createTransaction
+
+
+
 }
 
 
