@@ -28,6 +28,8 @@ contract Multisig {
     error InvalidAdminNumber(uint number);
     error dulicate(address _addr);
 
+    event Create(address who, address spender, uint amount);
+
     modifier onlyAdmin() {
         require(isAdmin[msg.sender], "Not a valid admin");
         _;
@@ -57,6 +59,7 @@ contract Multisig {
         _transaction.amount = amount;
         _transaction.spender = spender;
         _transaction.isActive = true;
+        emit Create(msg.sender, spender, amount);
         ApproveTransaction(transactionId);
     }
 
