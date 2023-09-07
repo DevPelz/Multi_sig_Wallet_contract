@@ -8,7 +8,7 @@ contract MultisigFactory {
 
     function createMultisig(
         address[] memory _admins
-    ) external returns (Multisig newWallets) {
+    ) external payable returns (Multisig newWallets) {
         newWallets = new Multisig(_admins);
         wallets.push(newWallets);
     }
