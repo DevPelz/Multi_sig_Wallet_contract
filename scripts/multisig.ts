@@ -17,13 +17,13 @@ async function main() {
     //@ts-ignore
     console.log((await reciept.wait())?.logs.args);
 
-    await multisig.connect(Admin3).ApproveTransaction(1);
+    await multisig.connect(Admin3).AprroveTransaction(1);
     let balanceBefore = await ethers.provider.getBalance(spender.address);
 
     console.log(`Balance Before ${ethers.formatEther(balanceBefore)}`);
     console.log(`======================================`); 
 
-    await multisig.connect(Admin2).ApproveTransaction(1);
+    await multisig.connect(Admin2).AprroveTransaction(1);
     console.log(`Spender Balance ${ethers.formatEther((await ethers.provider.getBalance(spender.address))- balanceBefore)}`);
     console.log(`======================================`); 
 
@@ -36,7 +36,6 @@ async function main() {
 
     console.log(`Multisig balance After: ${ethers.formatEther(await ethers.provider.getBalance(multisig))}`);
     console.log(`======================================`); 
-    // console.log(`sent ${sent} ether to ${multisig.target}`);
 }
 
 

@@ -19,7 +19,7 @@ async function main() {
   );
 
   let [bal, time] = await lock.getBalance();
-  console.log(bal, time);
+  console.log(Number(23455e18))
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: SEE LICENSE IN LICENSE
-pragma solidity ^0.8.19;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.19;
 
 interface IMultisig {
     struct Transaction {
@@ -11,7 +11,7 @@ interface IMultisig {
 
     function createTransaction(uint amount, address spender) external;
 
-    function ApproveTransaction(uint _id) external;
+    function AprroveTransaction(uint _id) external;
 
     function sendTransaction(uint id) external;
 

@@ -60,10 +60,10 @@ contract Multisig {
         _transaction.spender = spender;
         _transaction.isActive = true;
         emit Create(msg.sender, spender, amount);
-        ApproveTransaction(transactionId);
+        AprroveTransaction(transactionId);
     }
 
-    function ApproveTransaction(uint _id) public onlyAdmin {
+    function AprroveTransaction(uint _id) public onlyAdmin {
         require(!hasApproved[_id][msg.sender], "Already Approved");
         hasApproved[_id][msg.sender] = true;
 
