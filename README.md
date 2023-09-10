@@ -22,7 +22,3 @@ The contract offers the following features:
 - Create Transaction: Call `createTransaction` with the amount and spender's address.
 - Approve Transaction: Admins use `ApproveTransaction` with the transaction ID.
 - Check Transaction Details: Use `getTransaction` with the transaction ID.
-
-## License
-
-This smart contract is licensed under MIT. See the SPDX-License-Identifier tag in the contract for full license details.
